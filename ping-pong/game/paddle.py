@@ -1,4 +1,5 @@
 import pygame
+import random
 
 class Paddle:
     def __init__(self, x, y, width, height):
