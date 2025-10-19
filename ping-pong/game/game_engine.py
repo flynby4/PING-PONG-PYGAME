@@ -97,10 +97,10 @@ class GameEngine:
             screen.blit(player_text, (self.width//4, 20))
             screen.blit(ai_text, (self.width * 3//4, 20))
             
-    def reset_game(self, winning_score):
+    def reset_game(self, best_of_number):
         self.player_score = 0
         self.ai_score = 0
-        self.winning_score = winning_score
+        self.winning_score = (best_of_number // 2) + 1
         self.game_over = False
         self.ball.reset()
         
