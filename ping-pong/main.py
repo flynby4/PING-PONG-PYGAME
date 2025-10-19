@@ -3,7 +3,10 @@ from game.game_engine import GameEngine
 
 # Initialize pygame/Start application
 pygame.init()
-pygame.mixer.init()
+try:
+    pygame.mixer.init()
+except pygame.error:
+    print("Warning: Sound device not found, game will run without sound.")
 
 # Screen dimensions
 WIDTH, HEIGHT = 800, 600
