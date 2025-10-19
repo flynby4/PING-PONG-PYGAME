@@ -1,5 +1,5 @@
 # PING-PONG-PYGAME
-SE lab 4 - Ping Pong Game : SRN - PES1UG23CS373 <br>
+SE lab 4 VIBE CODING - Ping Pong Game : SRN - PES1UG23CS373 <br>
 SEC: G
 
 ---
