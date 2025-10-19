@@ -8,4 +8,4 @@ Its made via LLM to make interactive game design using object-oriented principle
 
 ---
 
-LLM used : Gemini ( due to pro version avalability for students )
+LLM used : Gemini ( due to pro version avalability )
