@@ -1,5 +1,6 @@
 import pygame
 import random
+import os 
 
 class Ball:
     def __init__(self, x, y, width, height, screen_width, screen_height):
@@ -14,8 +15,12 @@ class Ball:
         self.velocity_x = random.choice([-5, 5])
         self.velocity_y = random.choice([-3, 3])
         
-        self.paddle_hit_sound = pygame.mixer.Sound("assets/paddle_hit.wav")
-        self.wall_bounce_sound = pygame.mixer.Sound("assets/wall_bounce.wav")
+        paddle_sound_path = "assets/paddle_hit.wav"
+        wall_sound_path = "assets/wall_bounce.wav"
+        
+        self.paddle_hit_sound = pygame.mixer.Sound(paddle_sound_path) if os.path.exists(paddle_sound_path) else None
+        self.wall_bounce_sound = pygame.mixer.Sound(wall_sound_path) if os.path.exists(wall_sound_path) else None
+
 
     def move(self):
         self.x += self.velocity_x
@@ -23,7 +28,8 @@ class Ball:
 
         if self.y <= 0 or self.y + self.height >= self.screen_height:
             self.velocity_y *= -1
-            self.wall_bounce_sound.play() # <-- Play wall bounce sound
+            if self.wall_bounce_sound: # <-- Add this check
+                self.wall_bounce_sound.play()
 
 
 
@@ -50,7 +56,9 @@ class Ball:
                 self.velocity_x *= -1
                 # Place the ball just to the right of the player's paddle
                 self.x = player_rect.right
-                self.paddle_hit_sound.play() # <-- Play paddle hit sound
+                if self.paddle_hit_sound: # <-- Add this check
+                    self.paddle_hit_sound.play()
+
 
         # Check collision with the AI's paddle (right side)
         if ball_rect.colliderect(ai_rect):
@@ -59,4 +67,5 @@ class Ball:
                 self.velocity_x *= -1
                 # Place the ball just to the left of the AI's paddle
                 self.x = ai_rect.left - self.width
-                self.paddle_hit_sound.play() # <-- Play paddle hit sound
+                if self.paddle_hit_sound: # <-- Add this check
+                    self.paddle_hit_sound.play()
