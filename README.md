@@ -5,3 +5,7 @@ SEC: G<br>
 ---
 This project is a terminal-based ping pong game using **Pygame**.
 Its made via LLM to make interactive game design using object-oriented principles and real-time graphical rendering.
+
+---
+
+LLM used : Gemini ( due to pro version avalability for students )
