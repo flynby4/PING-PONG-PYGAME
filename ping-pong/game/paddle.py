@@ -7,7 +7,7 @@ class Paddle:
         self.width = width
         self.height = height
         self.speed = 7
-        #Adding a mistake chance (0.10 is a 10% chance per frame) so ai is beatable
+        #Adding a mistake chance (if this is 0.10 is a 10% chance per frame) so ai is beatable
         self.mistake_chance = 0.05
 
     def move(self, dy, screen_height):
