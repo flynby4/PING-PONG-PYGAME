@@ -62,6 +62,13 @@ class GameEngine:
             winner_rect = winner_surface.get_rect(center=(self.width // 2, self.height // 2 - 100))
             screen.blit(winner_surface, winner_rect)
 
+            score_font = pygame.font.SysFont("Arial", 30) # A medium font for the score
+            final_score_str = f"AI: {self.ai_score} v/s Player: {self.player_score}"
+            final_score_surface = score_font.render(final_score_str, True, WHITE)
+            # Position the score 60 pixels below the winner text
+            final_score_rect = final_score_surface.get_rect(center=(self.width // 2, winner_rect.centery + 60))
+            screen.blit(final_score_surface, final_score_rect)
+
             # --- Draw Replay Options ---
             options_font = pygame.font.SysFont("Arial", 24) # A smaller font for options
             options = [
