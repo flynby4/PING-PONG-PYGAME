@@ -1,7 +1,7 @@
 import pygame
 from .paddle import Paddle
 from .ball import Ball
-
+import os
 # Game Engine
 
 WHITE = (255, 255, 255)
@@ -23,8 +23,9 @@ class GameEngine:
         
         self.winning_score = 5
         self.game_over = False
-        
-        self.score_sound = pygame.mixer.Sound("assets/score_point.wav")
+
+        score_sound_path = "assets/score_point.wav"
+        self.score_sound = pygame.mixer.Sound(score_sound_path) if os.path.exists(score_sound_path) else None
 
     def handle_input(self):
         keys = pygame.key.get_pressed()
@@ -39,11 +40,13 @@ class GameEngine:
 
         if self.ball.x <= 0:
             self.ai_score += 1
-            self.score_sound.play() # <-- Play score sound
+            if self.score_sound: #score sound
+                self.score_sound.play()
             self.ball.reset()
         elif self.ball.x >= self.width:
             self.player_score += 1
-            self.score_sound.play() # <-- Play score sound
+            if self.score_sound: # score sound
+                self.score_sound.play()
             self.ball.reset()
 
         self.ai.auto_track(self.ball, self.height)
